@@ -1,0 +1,14 @@
+D:\Enzo's Files\Projects\Sample\SampleSNS\SampleSNS\bin\Debug\netcoreapp2.1\SampleSNS.deps.json
+D:\Enzo's Files\Projects\Sample\SampleSNS\SampleSNS\bin\Debug\netcoreapp2.1\SampleSNS.runtimeconfig.json
+D:\Enzo's Files\Projects\Sample\SampleSNS\SampleSNS\bin\Debug\netcoreapp2.1\SampleSNS.runtimeconfig.dev.json
+D:\Enzo's Files\Projects\Sample\SampleSNS\SampleSNS\bin\Debug\netcoreapp2.1\SampleSNS.dll
+D:\Enzo's Files\Projects\Sample\SampleSNS\SampleSNS\obj\Debug\netcoreapp2.1\SampleSNS.csproj.CoreCompileInputs.cache
+D:\Enzo's Files\Projects\Sample\SampleSNS\SampleSNS\obj\Debug\netcoreapp2.1\SampleSNS.RazorAssemblyInfo.cache
+D:\Enzo's Files\Projects\Sample\SampleSNS\SampleSNS\obj\Debug\netcoreapp2.1\SampleSNS.RazorAssemblyInfo.cs
+D:\Enzo's Files\Projects\Sample\SampleSNS\SampleSNS\obj\Debug\netcoreapp2.1\SampleSNS.AssemblyInfoInputs.cache
+D:\Enzo's Files\Projects\Sample\SampleSNS\SampleSNS\obj\Debug\netcoreapp2.1\SampleSNS.AssemblyInfo.cs
+D:\Enzo's Files\Projects\Sample\SampleSNS\SampleSNS\obj\Debug\netcoreapp2.1\SampleSNS.RazorTargetAssemblyInfo.cache
+D:\Enzo's Files\Projects\Sample\SampleSNS\SampleSNS\bin\Debug\netcoreapp2.1\SampleSNS.pdb
+D:\Enzo's Files\Projects\Sample\SampleSNS\SampleSNS\obj\Debug\netcoreapp2.1\SampleSNS.dll
+D:\Enzo's Files\Projects\Sample\SampleSNS\SampleSNS\obj\Debug\netcoreapp2.1\SampleSNS.pdb
+D:\Enzo's Files\Projects\Sample\SampleSNS\SampleSNS\obj\Debug\netcoreapp2.1\SampleSNS.csprojAssemblyReference.cache

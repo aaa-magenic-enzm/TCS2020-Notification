@@ -1,0 +1,4 @@
+https://www.c-sharpcorner.com/article/configuring-amazon-sns-to-publish-email-notification-to-ses-via-sqs-programmatic/
+
+Ensure that IAM has access to SNS and SQS
+ - to subscribe needs the queueARN formt he attributes and the topic arn fomr the topic list you wish to subcribe
