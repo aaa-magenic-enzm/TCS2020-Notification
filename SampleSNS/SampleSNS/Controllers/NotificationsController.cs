@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
 using Amazon.SimpleNotificationService;
@@ -13,7 +13,64 @@ namespace SampleSNS.Controllers
     [ApiController]
     public class NotificationsController : ControllerBase
     {
-        BasicAWSCredentials credentials = new BasicAWSCredentials("AKIAXLXB3FZEYMSNWBXF", "O41SYhQwXxfM044jybcgQCqZJqGN+gdzUd7ikfAn");
+        BasicAWSCredentials credentials = new BasicAWSCredentials("sample", "sample");
+
+        [HttpGet(Name = "Create Topic")]
+        [Route("CreateTopic")]
+        public async System.Threading.Tasks.Task<CreateTopicResponse> CreateTopic(string topicName)
+        {
+            CreateTopicResponse createTopicResponse = new CreateTopicResponse();
+            using (AmazonSimpleNotificationServiceClient snsClient = new AmazonSimpleNotificationServiceClient(credentials, Amazon.RegionEndpoint.USEast2))
+            {
+                CreateTopicRequest createTopicRequest = new CreateTopicRequest(topicName);
+                createTopicResponse = await snsClient.CreateTopicAsync(createTopicRequest);
+            }
+
+            return createTopicResponse;
+        }
+
+        [HttpGet(Name = "Subscribe to a topic")]
+        [Route("SubscribeToTopic")]
+        public async System.Threading.Tasks.Task<SubscribeResponse> SubscribeToTopic(string topicArn, string emailAddress)
+        {
+            SubscribeResponse subscribeResponse = new SubscribeResponse();
+            using (AmazonSimpleNotificationServiceClient snsClient = new AmazonSimpleNotificationServiceClient(credentials, Amazon.RegionEndpoint.USEast2))
+            {
+                SubscribeRequest subscribeRequest = new SubscribeRequest(topicArn, "email", emailAddress);
+                subscribeResponse = await snsClient.SubscribeAsync(subscribeRequest);
+            }
+
+            return subscribeResponse;
+        }
+
+
+        [HttpGet(Name = "Delete a topic")]
+        [Route("DeleteTopic")]
+        public async System.Threading.Tasks.Task<DeleteTopicResponse> DeleteTopic(string topicArn)
+        {
+            DeleteTopicResponse deleteTopicResponse = new DeleteTopicResponse();
+            using (AmazonSimpleNotificationServiceClient snsClient = new AmazonSimpleNotificationServiceClient(credentials, Amazon.RegionEndpoint.USEast2))
+            {
+                DeleteTopicRequest deleteRequest = new DeleteTopicRequest(topicArn);
+                deleteTopicResponse = await snsClient.DeleteTopicAsync(deleteRequest);
+            }
+
+            return deleteTopicResponse;
+        }
+
+        [HttpGet(Name = "Unsubscribe to a topic")]
+        [Route("Unsubscribe")]
+        public async System.Threading.Tasks.Task<UnsubscribeResponse> Unsubcribe(string subscriptionArn)
+        {
+            UnsubscribeResponse unsubscribeResponse = new UnsubscribeResponse();
+            using (AmazonSimpleNotificationServiceClient snsClient = new AmazonSimpleNotificationServiceClient(credentials, Amazon.RegionEndpoint.USEast2))
+            {
+                UnsubscribeRequest unsubscribeRequest = new UnsubscribeRequest(subscriptionArn);
+                unsubscribeResponse = await snsClient.UnsubscribeAsync(unsubscribeRequest);
+            }
+
+            return unsubscribeResponse;
+        }
 
         [HttpGet(Name = "Create SQS")]
         [Route("CreateSQS")]
@@ -106,34 +163,6 @@ namespace SampleSNS.Controllers
 
             return subscriptionResponse;
 
-            //// allow SQS to recieve message from SNS
-            //SetQueueAttributesResponse setAttributeResponse = new SetQueueAttributesResponse();
-            //using (AmazonSQSClient sqsClient = new AmazonSQSClient(credentials, Amazon.RegionEndpoint.USEast2))
-            //{
-            //    Dictionary<string, string> attrs = new Dictionary<string, string>();
-            //    attrs.Add(QueueAttributeName.Policy,
-            //        "{\"Version\": " + "\"2020-06-27\"," +
-            //            "\"Id\":" + "\\" + sqsArn + "/SQSDefaultPolicy\"," +
-            //            "\"Statement\":" + " [ {\"Sid\":" + "\"Sid1494310941284\"," +
-            //            "\"Effect\":" + "\"Allow\"," +
-            //            "\"Principal\":" + "\"*\"," +
-            //            "\"Action\":" + "\"SQS:SendMessage\"," +
-            //            "\"Resource\":" + "\\" + sqsArn + "\"," +
-            //            "\"Condition\":" +
-            //            "{\"StringEquals\":" +
-            //           "{\"aws:SourceArn\":" + "\\" + topicARN + "\"}} }]}");
-
-            //    SetQueueAttributesRequest setAttributeRequest = new SetQueueAttributesRequest
-            //    {
-            //        Attributes = attrs,
-            //        QueueUrl = queueUrl
-
-            //    };
-
-            //    setAttributeResponse = await sqsClient.SetQueueAttributesAsync(setAttributeRequest);
-            //}
-
-            //return setAttributeResponse;
         }
 
         [HttpGet(Name = "publish a message to a topic")]
